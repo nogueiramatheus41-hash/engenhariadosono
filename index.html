@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Engenharia do Sono — Pare de tentar dormir melhor</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Sora:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1158540236412429');
+fbq('track','PageView');
+fbq('track','ViewContent',{
+  content_name:'Engenharia do Sono',
+  content_category:'Ebook',
+  currency:'BRL',
+  value:29.90
+});
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1158540236412429&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  --bg:#06080d;
+  --bg2:#0d1117;
+  --bg3:#111820;
+  --cyan:#00e5ff;
+  --cyan2:#00b8cc;
+  --amber:#f59e0b;
+  --white:#f0f4f8;
+  --muted:#8899aa;
+  --border:#1a2433;
+  --mono:'Space Mono',monospace;
+  --sans:'Sora',sans-serif;
+}
+
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--white);font-family:var(--sans);overflow-x:hidden}
+
+/* GRID BG */
+body::before{
+  content:'';position:fixed;inset:0;
+  background-image:
+    linear-gradient(rgba(0,229,255,.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,229,255,.03) 1px,transparent 1px);
+  background-size:40px 40px;
+  pointer-events:none;z-index:0;
+}
+
+.wrap{max-width:780px;margin:0 auto;padding:0 20px;position:relative;z-index:1}
+
+/* HEADER */
+.header{text-align:center;padding:60px 20px 0;position:relative;z-index:1}
+.header .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:28px;opacity:.8}
+.header h1{font-size:clamp(42px,7vw,72px);font-weight:800;line-height:1.0;letter-spacing:-2px;margin-bottom:20px}
+.header h1 span{color:var(--cyan)}
+.header .tagline{font-size:clamp(18px,2.5vw,24px);font-weight:300;color:#aabbc8;max-width:600px;margin:0 auto 36px;line-height:1.5}
+.header .tagline strong{color:var(--white);font-weight:600}
+
+.cta-btn{
+  display:inline-block;
+  background:var(--cyan);
+  color:#000;
+  font-family:var(--sans);
+  font-weight:700;
+  font-size:17px;
+  padding:18px 44px;
+  border-radius:4px;
+  text-decoration:none;
+  letter-spacing:.02em;
+  transition:all .2s;
+  position:relative;
+}
+.cta-btn:hover{background:var(--cyan2);transform:translateY(-1px)}
+.cta-btn.lg{font-size:19px;padding:22px 56px;width:100%;max-width:480px;text-align:center;display:block;margin:0 auto}
+.cta-sub{font-size:12px;color:var(--muted);margin-top:10px;text-align:center;font-family:var(--mono)}
+
+/* DIVIDER */
+.divider{border:none;border-top:1px solid var(--border);margin:60px 0}
+.divider-glow{border:none;height:1px;background:linear-gradient(90deg,transparent,var(--cyan),transparent);margin:60px 0;opacity:.3}
+
+/* SECTIONS */
+section{padding:60px 20px;position:relative;z-index:1}
+
+/* PAIN */
+.pain{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.pain .lead{font-size:clamp(20px,3vw,28px);font-weight:600;line-height:1.4;margin-bottom:24px;max-width:680px}
+.pain p{font-size:16px;color:#8899aa;line-height:1.8;margin-bottom:16px;max-width:660px}
+.pain p strong{color:var(--white)}
+
+.tried-list{margin:32px 0;padding:24px;background:var(--bg);border:1px solid var(--border);border-radius:4px}
+.tried-list p{font-family:var(--mono);font-size:13px;color:var(--muted);margin-bottom:4px}
+.tried-item{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);font-size:15px;color:#6a7f8e}
+.tried-item:last-child{border-bottom:none}
+.tried-item::before{content:'✗';color:#ef4444;font-family:var(--mono);font-size:14px;min-width:16px}
+
+.pain-statement{font-size:clamp(20px,3vw,26px);font-weight:700;color:var(--white);margin-top:32px;line-height:1.4;padding-left:20px;border-left:3px solid var(--cyan)}
+
+/* MECHANISM */
+.mech{text-align:center}
+.mech .tag{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);background:rgba(0,229,255,.08);border:1px solid rgba(0,229,255,.2);padding:6px 16px;border-radius:2px;margin-bottom:24px}
+.mech h2{font-size:clamp(26px,4vw,40px);font-weight:800;letter-spacing:-1px;margin-bottom:20px;line-height:1.2}
+.mech p{font-size:16px;color:#8899aa;line-height:1.9;max-width:620px;margin:0 auto 20px}
+.mech p strong{color:var(--white)}
+
+.mech-box{background:var(--bg3);border:1px solid rgba(0,229,255,.15);border-radius:6px;padding:32px;margin:40px auto;max-width:620px;text-align:left;position:relative;overflow:hidden}
+.mech-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--cyan),transparent)}
+.mech-box h3{font-family:var(--mono);font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);margin-bottom:16px}
+.mech-box p{font-size:15px;color:#8899aa;line-height:1.8;margin-bottom:0}
+.mech-box p strong{color:var(--white)}
+
+/* PRODUCT */
+.product{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);text-align:center}
+.product .tag{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--amber);background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.2);padding:6px 16px;border-radius:2px;margin-bottom:20px}
+.product h2{font-size:clamp(28px,4.5vw,46px);font-weight:800;letter-spacing:-1.5px;margin-bottom:12px}
+.product .sub{font-size:17px;color:#8899aa;margin-bottom:40px;max-width:540px;margin-left:auto;margin-right:auto;line-height:1.6}
+
+/* BULLETS */
+.learn-grid{display:grid;grid-template-columns:1fr;gap:16px;max-width:680px;margin:0 auto;text-align:left}
+.learn-item{display:flex;gap:16px;align-items:flex-start;background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:18px 20px;transition:border-color .2s}
+.learn-item:hover{border-color:rgba(0,229,255,.2)}
+.learn-num{font-family:var(--mono);font-size:13px;color:var(--cyan);min-width:28px;font-weight:700;margin-top:1px}
+.learn-text h4{font-size:15px;font-weight:600;color:var(--white);margin-bottom:4px}
+.learn-text p{font-size:13px;color:var(--muted);line-height:1.6}
+
+/* FOR WHO */
+.forwhom{text-align:center}
+.forwhom h2{font-size:clamp(24px,4vw,38px);font-weight:800;letter-spacing:-1px;margin-bottom:12px}
+.forwhom .sub{font-size:16px;color:#8899aa;margin-bottom:40px}
+
+.who-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;max-width:700px;margin:0 auto;text-align:left}
+.who-item{background:var(--bg3);border:1px solid var(--border);border-radius:4px;padding:16px 20px;display:flex;gap:12px;align-items:flex-start;font-size:15px;color:#aabbc8;line-height:1.5}
+.who-item::before{content:'→';color:var(--cyan);font-family:var(--mono);font-size:14px;min-width:18px;margin-top:1px}
+
+.notfor{max-width:680px;margin:32px auto 0;background:rgba(239,68,68,.05);border:1px solid rgba(239,68,68,.15);border-radius:4px;padding:20px 24px}
+.notfor p{font-size:13px;color:#ef4444;font-family:var(--mono);letter-spacing:.05em;margin-bottom:8px}
+.notfor span{font-size:14px;color:#6a7f8e;line-height:1.7;display:block}
+
+/* WHAT YOU GET */
+.get{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);text-align:center}
+.get h2{font-size:clamp(24px,4vw,38px);font-weight:800;letter-spacing:-1px;margin-bottom:40px}
+.get-list{max-width:580px;margin:0 auto;text-align:left}
+.get-item{display:flex;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid var(--border);font-size:15px;color:var(--white)}
+.get-item:last-child{border-bottom:none}
+.get-item::before{content:'✓';color:var(--cyan);font-family:var(--mono);font-size:16px;font-weight:700;min-width:20px}
+.get-item span{color:var(--muted);font-size:13px;margin-left:4px}
+
+/* GUARANTEE */
+.guarantee{text-align:center}
+.gbox{max-width:600px;margin:0 auto;background:var(--bg3);border:1px solid rgba(0,229,255,.12);border-radius:6px;padding:40px;position:relative;overflow:hidden}
+.gbox::after{content:'30';position:absolute;right:-10px;bottom:-20px;font-size:140px;font-weight:800;color:rgba(0,229,255,.04);font-family:var(--mono);pointer-events:none}
+.gbox .icon{font-size:48px;margin-bottom:16px}
+.gbox h3{font-size:24px;font-weight:700;margin-bottom:12px}
+.gbox p{font-size:15px;color:#8899aa;line-height:1.8;max-width:440px;margin:0 auto}
+.gbox p strong{color:var(--white)}
+
+/* PRICE */
+.price-section{text-align:center}
+.price-box{max-width:520px;margin:0 auto;background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:44px 40px;position:relative;overflow:hidden}
+.price-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--cyan),var(--amber))}
+.price-label{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+.price-old{font-size:16px;color:#4a5568;text-decoration:line-through;margin-bottom:6px;font-family:var(--mono)}
+.price-value{font-size:clamp(52px,8vw,72px);font-weight:800;color:var(--white);letter-spacing:-2px;line-height:1;margin-bottom:4px}
+.price-value small{font-size:24px;font-weight:400;color:var(--muted);vertical-align:top;margin-top:12px;display:inline-block}
+.price-cents{font-size:28px;font-weight:400;color:var(--muted)}
+.price-desc{font-size:13px;color:var(--muted);margin-bottom:32px;font-family:var(--mono)}
+.access-label{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--muted);margin-top:16px}
+
+/* FAQ */
+.faq h2{font-size:clamp(22px,3.5vw,34px);font-weight:800;letter-spacing:-1px;margin-bottom:36px;text-align:center}
+.faq-item{border-bottom:1px solid var(--border);padding:20px 0}
+.faq-item:first-of-type{border-top:1px solid var(--border)}
+.faq-q{font-size:16px;font-weight:600;color:var(--white);margin-bottom:10px;cursor:pointer}
+.faq-a{font-size:14px;color:var(--muted);line-height:1.8}
+
+/* FOOTER */
+footer{text-align:center;padding:40px 20px;border-top:1px solid var(--border);position:relative;z-index:1}
+footer p{font-size:12px;color:#3a4a5a;font-family:var(--mono);line-height:1.8}
+footer a{color:#4a6a7a;text-decoration:none}
+
+/* STICKY CTA mobile */
+.sticky-bar{position:fixed;bottom:0;left:0;right:0;background:rgba(6,8,13,.95);border-top:1px solid var(--border);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;z-index:100;backdrop-filter:blur(10px)}
+.sticky-bar .info{font-size:13px;color:var(--muted)}
+.sticky-bar .info strong{color:var(--white);font-size:16px;display:block}
+.sticky-bar a{background:var(--cyan);color:#000;font-weight:700;font-size:14px;padding:12px 28px;border-radius:4px;text-decoration:none;white-space:nowrap}
+
+@media(max-width:600px){
+  .sticky-bar{flex-direction:column;gap:10px;text-align:center}
+  .sticky-bar a{width:100%;text-align:center;padding:14px}
+  .who-grid{grid-template-columns:1fr}
+  .price-box{padding:32px 24px}
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.header{animation:fadeUp .6s ease both}
+.header h1{animation:fadeUp .7s ease both}
+.header .tagline{animation:fadeUp .8s ease both}
+.header .cta-btn{animation:fadeUp .9s ease both}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="header">
+  <div class="wrap">
+    <div class="eyebrow">Engenharia do Sono · Ebook Digital</div>
+    <h1>Pare de tentar<br>dormir melhor.<br><span>Entenda por que<br>você não consegue.</span></h1>
+    <p class="tagline">Um guia prático que revela a <strong>engenharia do seu ciclo biológico</strong> — e como consertar o que está quebrado nesta noite.</p>
+    <a href="https://pay.kiwify.com.br/BcUSqF7" class="cta-btn">Quero entender meu sono →</a>
+    <p class="cta-sub">Acesso imediato · R$29,90 · Garantia de 30 dias</p>
+  </div>
+</div>
+
+<!-- PAIN -->
+<section class="pain">
+  <div class="wrap">
+    <p class="lead">Você deita exausto. O corpo pede descanso.<br>Mas a mente simplesmente <strong>não desliga.</strong></p>
+    <p>Fica rolando na cama, olhando pro teto, esperando o sono vir. Às vezes pega no sono às 2h, 3h da manhã. No dia seguinte, arrasta o corpo até o café e passa o dia no modo automático.</p>
+    <p>E a noite seguinte? <strong>Mesma coisa.</strong></p>
+
+    <div class="tried-list">
+      <p>// o que você provavelmente já tentou</p>
+      <div class="tried-item">Dormir mais cedo</div>
+      <div class="tried-item">Chá de camomila, melatonina, remédio para dormir</div>
+      <div class="tried-item">Cortar a tela antes de dormir</div>
+      <div class="tried-item">Meditação guiada, sons binaurais</div>
+      <div class="tried-item">Contar ovelhas, respirar fundo, "tentar relaxar"</div>
+    </div>
+
+    <p class="pain-statement">E nada funcionou de forma consistente.<br>Por uma razão que ninguém te explicou direito.</p>
+  </div>
+</section>
+
+<!-- MECHANISM -->
+<section class="mech">
+  <div class="wrap">
+    <div class="tag">o problema real</div>
+    <h2>O problema não é você.<br>É a <span style="color:var(--cyan)">engenharia</span> do seu sono.</h2>
+    <p>Seu cérebro tem um sistema interno — o <strong>ritmo circadiano</strong> — que controla quando você dorme, como você dorme e qual a qualidade real do descanso.</p>
+    <p>Quando esse sistema está desregulado, não adianta "tentar" dormir. É como tentar desligar um motor na força. O resultado: você deita cansado, mas o cérebro ainda está em estado de alerta.</p>
+
+    <div class="mech-box">
+      <h3>// diagnóstico</h3>
+      <p>A maioria das dicas de sono trata o <strong>sintoma</strong> — a dificuldade de adormecer. A Engenharia do Sono trata a <strong>causa</strong> — o sistema biológico que está fora de sincronia. São problemas diferentes. E precisam de soluções diferentes.</p>
+    </div>
+
+    <p>Quando você entende como o seu ritmo funciona, o sono deixa de ser uma batalha e se torna um processo natural. Como ele sempre deveria ter sido.</p>
+  </div>
+</section>
+
+<!-- PRODUCT -->
+<section class="product">
+  <div class="wrap">
+    <div class="tag">apresentando</div>
+    <h2>Engenharia do Sono</h2>
+    <p class="sub">O guia que vai te fazer entender seu sono — não só tentar dormir melhor. Porque entender é o que muda tudo.</p>
+
+    <div class="learn-grid">
+      <div class="learn-item">
+        <span class="learn-num">01</span>
+        <div class="learn-text">
+          <h4>Por que seu cérebro ainda está "acordado"</h4>
+          <p>Entenda por que o corpo está exausto mas a mente não desliga — e o que ativa esse estado de alerta involuntário.</p>
+        </div>
+      </div>
+      <div class="learn-item">
+        <span class="learn-num">02</span>
+        <div class="learn-text">
+          <h4>A janela de 90 minutos que decide sua noite</h4>
+          <p>Existe um período crítico antes de dormir que determina a qualidade de todo o ciclo. Poucos sabem disso. Menos ainda aplicam.</p>
+        </div>
+      </div>
+      <div class="learn-item">
+        <span class="learn-num">03</span>
+        <div class="learn-text">
+          <h4>Os 3 hábitos "saudáveis" que sabotam sua melatonina</h4>
+          <p>Coisas que você faz achando que ajudam o sono — e que estão ativamente mantendo seu cérebro em modo vigília.</p>
+        </div>
+      </div>
+      <div class="learn-item">
+        <span class="learn-num">04</span>
+        <div class="learn-text">
+          <h4>Como reprogramar seu ritmo circadiano em 7 dias</h4>
+          <p>Sem remédios, sem suplementos obrigatórios. Ajustes precisos no seu comportamento que o cérebro reconhece como sinais de sono.</p>
+        </div>
+      </div>
+      <div class="learn-item">
+        <span class="learn-num">05</span>
+        <div class="learn-text">
+          <h4>Por que dormir mais cedo pode piorar a insônia</h4>
+          <p>Contra-intuitivo e verificado pela ciência do sono. Entenda o paradoxo e como sair dele sem esforço.</p>
+        </div>
+      </div>
+      <div class="learn-item">
+        <span class="learn-num">06</span>
+        <div class="learn-text">
+          <h4>Despejo Mental, Respiração 4-7-8 e Santuário do Sono</h4>
+          <p>Três técnicas de aplicação imediata. Você aplica ainda nesta noite — não precisa esperar semanas para sentir diferença.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOR WHO -->
+<section class="forwhom">
+  <div class="wrap">
+    <h2>Este guia é para você que:</h2>
+    <p class="sub">Se você se identificar com pelo menos 3 itens, este conteúdo foi feito para você.</p>
+    <div class="who-grid">
+      <div class="who-item">Deita cansado mas a mente não para</div>
+      <div class="who-item">Acorda várias vezes durante a noite</div>
+      <div class="who-item">Levanta sem energia mesmo depois de horas dormindo</div>
+      <div class="who-item">Já tentou de tudo e nada funcionou de forma consistente</div>
+      <div class="who-item">Não quer depender de remédios para dormir</div>
+      <div class="who-item">Quer entender o que está quebrando o seu sono — de verdade</div>
+    </div>
+
+    <div class="notfor">
+      <p>// este guia não é para você se:</p>
+      <span>Você está procurando uma fórmula mágica que funcione sem nenhuma mudança de hábito. A Engenharia do Sono exige que você entenda o sistema — não apenas siga um checklist cegamente.</span>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU GET -->
+<section class="get">
+  <div class="wrap">
+    <h2>O que você recebe</h2>
+    <div class="get-list">
+      <div class="get-item">Ebook Engenharia do Sono completo <span>em PDF, acesso imediato</span></div>
+      <div class="get-item">Técnica Despejo Mental <span>para desligar a mente antes de dormir</span></div>
+      <div class="get-item">Protocolo Respiração 4-7-8 <span>ativação do sistema nervoso parassimpático</span></div>
+      <div class="get-item">Checklist do Santuário do Sono <span>ambiente ideal para sono profundo</span></div>
+      <div class="get-item">Linguagem direta, sem termos médicos <span>leitura rápida, aplicação na mesma noite</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- GUARANTEE -->
+<section class="guarantee">
+  <div class="wrap">
+    <div class="gbox">
+      <div class="icon">🛡</div>
+      <h3>Garantia de 30 dias</h3>
+      <p>Aplique o que está no guia por 30 dias. Se você não sentir diferença real na qualidade do seu sono, devolvemos <strong>100% do valor</strong> — sem perguntas, sem burocracia, sem justificativa.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICE -->
+<section class="price-section">
+  <div class="wrap">
+    <div class="price-box">
+      <p class="price-label">// acesso completo</p>
+      <p class="price-old">De R$ 97,00</p>
+      <div class="price-value"><small>R$</small> 29<span class="price-cents">,90</span></div>
+      <p class="price-desc">pagamento único · sem mensalidade · acesso vitalício</p>
+      <a href="https://pay.kiwify.com.br/BcUSqF7" class="cta-btn lg">Quero a Engenharia do Sono →</a>
+      <p class="cta-sub">Acesso imediato após o pagamento · Garantia de 30 dias</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="wrap">
+    <h2>Dúvidas frequentes</h2>
+
+    <div class="faq-item">
+      <p class="faq-q">Em quanto tempo verei resultado?</p>
+      <p class="faq-a">As técnicas de aplicação imediata (Despejo Mental, Respiração 4-7-8) você pode aplicar ainda na primeira noite. O realinhamento completo do ritmo circadiano acontece em 7 a 14 dias de aplicação consistente.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">Funciona para quem tem insônia há muito tempo?</p>
+      <p class="faq-a">Sim. O guia aborda tanto insônia pontual quanto padrões crônicos. A diferença é que padrões mais antigos exigem mais tempo de aplicação — mas o mecanismo de funcionamento é o mesmo.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">Precisa de remédios ou suplementos?</p>
+      <p class="faq-a">Não. Todo o conteúdo é baseado em ajustes comportamentais e ambientais. Nenhum suplemento é obrigatório.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">Como recebo o material?</p>
+      <p class="faq-a">Imediatamente após o pagamento. Você recebe o link de acesso por e-mail e pode baixar o PDF no mesmo instante.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">E se eu não gostar?</p>
+      <p class="faq-a">30 dias de garantia total. Pede o reembolso por e-mail e devolvemos 100% do valor. Sem perguntas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section style="text-align:center;padding:60px 20px 100px;position:relative;z-index:1">
+  <div class="wrap">
+    <p style="font-family:var(--mono);font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);margin-bottom:20px">// última chance</p>
+    <h2 style="font-size:clamp(26px,4vw,42px);font-weight:800;letter-spacing:-1px;margin-bottom:16px;line-height:1.2">Seu sono não vai se consertar sozinho.<br>E você já sabe disso.</h2>
+    <p style="font-size:16px;color:var(--muted);margin-bottom:40px;max-width:500px;margin-left:auto;margin-right:auto;line-height:1.7">A única diferença entre hoje e amanhã é a decisão de entender o que está quebrado — e como consertar.</p>
+    <a href="https://pay.kiwify.com.br/BcUSqF7" class="cta-btn lg">Quero a Engenharia do Sono →</a>
+    <p class="cta-sub" style="margin-top:14px">R$29,90 · Acesso imediato · Garantia 30 dias</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>
+    Engenharia do Sono · Produto digital em PDF<br>
+    Dúvidas? <a href="mailto:contato@engenhariadosono.com.br">contato@engenhariadosono.com.br</a><br><br>
+    © 2026 Engenharia do Sono. Todos os direitos reservados.<br>
+    Este produto não substitui acompanhamento médico ou tratamento clínico.
+  </p>
+</footer>
+
+<!-- STICKY BAR -->
+<div class="sticky-bar">
+  <div class="info">
+    <strong>Engenharia do Sono</strong>
+    Acesso imediato por R$29,90
+  </div>
+  <a href="https://pay.kiwify.com.br/BcUSqF7">Quero agora →</a>
+</div>
+
+</body>
+</html>
